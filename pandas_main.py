@@ -59,7 +59,9 @@ df_all = pd.concat(dataframe_list, ignore_index=True)
 df_filter_a = pd.DataFrame(columns=col_name)
 tmp = 0
 for i in range(len(df_all)):
-    if df_all.loc[i, '主要用途'] == '住家用' and re.search('住宅大樓', df_all.loc[i, '建物型態'])     and (re.search('...', df_all.loc[i, '總樓層數']) or re.search('....', df_all.loc[i, '總樓層數']))     and not(re.search('^十二', df_all.loc[i, '總樓層數']) or re.search('^十一', df_all.loc[i, '總樓層數'])):
+    if df_all.loc[i, '主要用途'] == '住家用' and re.search('住宅大樓', df_all.loc[i, '建物型態']) \ 
+      and (re.search('...', df_all.loc[i, '總樓層數']) or re.search('....', df_all.loc[i, '總樓層數'])) \
+      and not(re.search('^十二', df_all.loc[i, '總樓層數']) or re.search('^十一', df_all.loc[i, '總樓層數'])):
         df_filter_a.loc[tmp] = df_all.loc[i]
         tmp += 1
         
