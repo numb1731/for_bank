@@ -52,13 +52,15 @@ def get_deals_by_gender_place():
             
     if owner_gender == '女':
         for count in female_gender_type:
-            for d in deal.find({"$and": [{'地區': place}, {"$and": [{'出租者': {'$regex':count}}, {'出租者': {'$regex': owner}}]}, {'出租者身分': owner_id}]}):
-                output.append({'標題': d['標題'], '出租者': d['出租者'], '出租者身分': d['出租者身分'], '聯絡電話': d['聯絡電話'], '型態': d['型態'], \
-                               '現況': d['現況'], '性別要求': d['性別要求'], '價格': d['價格'], '地區': d['地區']})
+            for d in deal.find({"$and": [{'地區': place}, \
+                {"$and": [{'出租者': {'$regex':count}}, {'出租者': {'$regex': owner}}]}, {'出租者身分': owner_id}]}):
+                output.append({'標題': d['標題'], '出租者': d['出租者'], '出租者身分': d['出租者身分'], '聯絡電話': d['聯絡電話'], \
+                               '型態': d['型態'], '現況': d['現況'], '性別要求': d['性別要求'], '價格': d['價格'], '地區': d['地區']})
     else:
-        for d in deal.find({"$and": [{'地區': place}, {"$and": [{'出租者': {'$regex':male_gender_type[0]}}, {'出租者': {'$regex': owner}}]}, {'出租者身分': owner_id}]}):
-                output.append({'標題': d['標題'], '出租者': d['出租者'], '出租者身分': d['出租者身分'], '聯絡電話': d['聯絡電話'], '型態': d['型態'], \
-                               '現況': d['現況'], '性別要求': d['性別要求'], '價格': d['價格'], '地區': d['地區']})
+        for d in deal.find({"$and": [{'地區': place}, \
+           {"$and": [{'出租者': {'$regex':male_gender_type[0]}}, {'出租者': {'$regex': owner}}]}, {'出租者身分': owner_id}]}):
+                output.append({'標題': d['標題'], '出租者': d['出租者'], '出租者身分': d['出租者身分'], '聯絡電話': d['聯絡電話'], \
+                               '型態': d['型態'], '現況': d['現況'], '性別要求': d['性別要求'], '價格': d['價格'], '地區': d['地區']})
     
             
     return jsonify({"result": output})
