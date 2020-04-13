@@ -12,7 +12,7 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 
-client = MongoClient("mongodb+srv://user1:1234@cluster0-7dgxh.mongodb.net/test?retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://user:password@cluster0-7dgxh.mongodb.net/test?retryWrites=true&w=majority")
 mydb = client['from591']
 
 @app.route('/deals_taipei_newtaipei', methods=['GET'])
