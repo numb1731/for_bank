@@ -16,9 +16,6 @@ driver.get(url)
 driver.find_element_by_xpath("// *[ @ id = 'area-box-close']").click()
 driver.find_element_by_xpath("//*[@id='search-location']/span[1]").click()
 driver.find_element_by_xpath("//*[@id='optionBox']/dl[1]/ul/li[2]/a").click()
-for i in range(0, 56):
-    driver.find_element_by_xpath("//a[@class='pageNext']").click()
-    time.sleep(3)
 req = request.Request(url, headers=headers)
 res = request.urlopen(req)
 soup = BeautifulSoup(res, 'html.parser')
@@ -27,7 +24,7 @@ pages = soup.find_all('a', {'class': 'pageNum-form'})
 final_page = pages[-1].text
 print('total page: ', final_page)
 
-p = 56
+p = 0
 while p < int(final_page):
     req = request.Request(url, headers=headers)
     res = request.urlopen(req)
